@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<main>
+  <div id="dashboard">
+    <app-item 
+      [image]="{ src: 'status.png', alt: 'A symbol'}" 
+      title="Server Status"
+    >
+      <app-server-status></app-server-status>
+    </app-item>
+        
+    <app-item
+      [image]="{ src: 'globe.png', alt: 'A globe'}"
+      title="Traffic"
+    >
+      <app-traffic></app-traffic>
+    </app-item>
+    
+    <app-item
+    [image]="{ src: 'list.png', alt: 'A list of item'}"
+    title="Support Tickets"
+  >
+    <app-tickets></app-tickets>
+  </app-item>
+  </div>
+</main>
