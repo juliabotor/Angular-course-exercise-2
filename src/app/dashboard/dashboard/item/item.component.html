@@ -1,8 +1,10 @@
 
     <article>
         <header>
+           <!-- Exibe a imagem recebida como input -->
           <img [src]="image.src" [alt]="image.alt" />
           <h2>{{ title }}</h2>
         </header>
+        <!-- ng-content permite inserir conteúdo externo dentro desse componente -->
         <ng-content></ng-content>
       </article>

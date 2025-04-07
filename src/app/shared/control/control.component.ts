@@ -15,6 +15,7 @@ import { Component, ElementRef, inject, input, ViewEncapsulation } from '@angula
 export class ControlComponent {
   //@HostBinding() className = 'control';
   label = input.required<string>();
+  // Injeta o ElementRef para ter acesso direto ao DOM do componente
   private el = inject(ElementRef);
 
   onClick(){
