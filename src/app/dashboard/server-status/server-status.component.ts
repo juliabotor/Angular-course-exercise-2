@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -12,14 +12,18 @@ export class ServerStatusComponent implements OnInit{
   // Variável que armazena o status atual do servidor
   // Aceita apenas 3 valores específicos (tipo literal)
 
-  currentStatus: 'online' | 'offline' | 'unknown' = 'online';
+  currentStatus =  signal<'online' | 'offline' | 'unknown'>('online');
 
   // DestroyRef permite executar uma função quando o componente for destruído
   // Usado aqui para limpar o setInterval e evitar vazamento de memória
   private destroyRef = inject(DestroyRef);
 
-  constructor(){}
-
+  constructor(){
+    effect(() => {
+      console.log(this.currentStatus());
+    });
+    
+  }
 
   // ngOnInit é chamado uma vez assim que o componente é inicializado
   ngOnInit(){
@@ -30,11 +34,11 @@ export class ServerStatusComponent implements OnInit{
       const rnd = Math.random();
 
       if (rnd <0.5){
-        this.currentStatus = 'online';
+        this.currentStatus.set('online');
       } else if (rnd <0.9){
-        this.currentStatus = 'offline';
+        this.currentStatus.set('offline');
       } else {
-        this.currentStatus = 'unknown';
+        this.currentStatus.set('unknown');
       }
     }, 5000);
 
