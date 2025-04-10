@@ -2,11 +2,11 @@
     <h3>
       <div
         [class]="{
-          'ticket-open': true,
-          'ticket-closed': false
+          'ticket-open': data().status === 'open',
+          'ticket-closed': data().status === 'closed'
         }"
       ></div>
-      <button (click="onToggleDetails()")>
+      <button (click)="onToggleDetails()">
         <span class="text">{{ data().title }}</span>
         <span>
           @if (detailsVisible()) {
@@ -47,6 +47,6 @@
     <p>{{ data().request }}</p>
   
     @if (data().status === 'open') {
-    <p><button>Mark as completed</button></p>
+    <p><button (click)="onMarkedAsCompleted()">Mark as completed</button></p>
     } }
   </article>

@@ -2,7 +2,7 @@
   Formulário que dispara o método onSubmit quando o botão for clicado ou Enter for pressionado.
   Os valores dos inputs são passados manualmente como parâmetros (via template reference).
 -->
-<form (ngSubmit)="onSubmit(titleInput.value, textInput.value)">
+<form #form (ngSubmit)="onSubmit(titleInput.value, textInput.value)">
     <!-- 
     Componente reutilizável <app-control>, com um input dentro.
     O label é passado como Input para o componente.
@@ -18,7 +18,7 @@
         <textarea name="request" id="request" rows="3" #textInput #input ></textarea>
     </app-control>
     <p>
-        <button appButton>
+        <button type="submit" appButton>
           Submit 
           <span ngProjectAs="icon">→</span>
         </button>

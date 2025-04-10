@@ -17,7 +17,7 @@ export class NewTicketComponent implements AfterViewInit{
   // Aqui estamos pegando o <form> lá do HTML para poder resetá-lo depois.
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
   //garante que terá acesso aos elementos que foram selecionados com o viewchild
-  add = output<{title: string; text: string}>();
+  add = output<{ title: string; text: string }>();
 
   ngAfterViewInit(): void {
       console.log('AFTER VIEW INIT');
